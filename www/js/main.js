@@ -1,6 +1,6 @@
 var tt = tt || {};
 
-(function($, config, utils, table, topBar) {
+(function($, config, utils, table, topPanel) {
   var temperatureTable = function() {
     this.changeViews = this.changeViews.bind(this);
     this._init = this._init.bind(this);
@@ -28,6 +28,8 @@ var tt = tt || {};
           return utils.temperatureConvert(value, true);
         }
       });
+
+      new topPanel();
 
       this.changeViews(config.isCelciusDefaultView);
     },
@@ -57,4 +59,4 @@ var tt = tt || {};
   };
 
   tt.temperatureTable = temperatureTable;
-})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topBar || {});
+})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topPanel || {});
