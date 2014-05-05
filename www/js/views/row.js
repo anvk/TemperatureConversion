@@ -21,7 +21,7 @@ var tt = tt || {};
       return this._markup;
     },
     _init: function(model) {
-      this._markup = utils.stringBuilder('<tr><td>{{fromValue}} {{fromPrefix}}</td><td>{{toValue}} {{toPrefix}}</td></tr>', model);
+      this._markup = utils.stringBuilder('<tr class="{{className}}"><td>{{fromValue}} {{fromPrefix}}</td><td>{{toValue}} {{toPrefix}}</td></tr>', model);
     },
     _markup: null
   };

@@ -23,15 +23,21 @@ var tt = tt || {};
           boundary = options.boundary,
           fromPrefix = options.fromPrefix,
           toPrefix = options.toPrefix,
+          oddClassRow = 'row',
+          evenClassRow = 'rowodd',
+          oddRow = true,
           rows = [],
           rowEntry;
+
       for (var i = boundary, length; i >= -1 * boundary; i = i - 5) {
         rowEntry = new row({
           fromValue: i,
           toValue: convertFunc(i),
           fromPrefix: fromPrefix,
-          toPrefix: toPrefix
+          toPrefix: toPrefix,
+          className: (oddRow) ? oddClassRow : evenClassRow
         });
+        oddRow = !oddRow;
         rows.push(rowEntry.getRowMarkup());
       }
 
