@@ -1,55 +1,48 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>PhoneGap</title>
-        <link type="text/css" href="css/styling.css" rel="stylesheet" />
-        
-        <script type="text/javascript" charset="utf-8" src="lib/phonegap/phonegap-1.4.1.js"></script>
-        <script type="text/javascript" charset="utf-8" src="lib/jquery/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" charset="utf-8" src="js/mainMenu.js"></script>
-        <script type="text/javascript" charset="utf-8" src="js/core.js"></script>
-        
-        <script type="text/javascript" charset="utf-8" src="extra/config.js"></script>
-        <script type="text/javascript" charset="utf-8" src="extra/ctof.js"></script>
-        <script type="text/javascript" charset="utf-8" src="extra/ftoc.js"></script>
-        
-        <script type="text/javascript" charset="utf-8">
+  <head>
+    <title>TemperatureTable</title>
+    <link type="text/css" href="css/styling.css" rel="stylesheet" />
 
+    <script type="text/javascript" charset="utf-8" src="lib/phonegap/phonegap-1.4.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="lib/jquery/jquery-1.7.1.min.js"></script>
 
-       
-        </script>
-    </head>
-    <body onload="onLoad();">
-        <div class="screen">
-        
-            <div class="topPanel">
-                <div class="relationImage0 divImage">
-                    <a href="#" onclick="relationClick(1)">
-                        <img src="img/CTOF.png" />
-                    </a>
-                </div>
-                
-                <div class="relationImage1 divImage" style="display: none;">
-                    <a href="#" onclick="relationClick(0)">
-                        <img src="img/FTOC.png" />
-                    </a>
-                </div>
-                
-                <input class="inputField input" type="number" maxlength="3" onkeyup="validate(this)" />
-                <img class="convImage1" src="img/arrow_red_small.png"/ style="display: none;">
-                <img class="convImage0" src="img/arrow_green_small.png"/>
-                <input class="inputField output" readonly="readonly" />
-            </div>
-            
-            <div class="valueTable0 view"></div>
-            
-            <div class="valueTable1 view"></div>
-        
-            <div class="footer">
-            <br />
-                Tap on <img src="img/CTOF.png" /> to change a type of temperature conversion.
-            </div>
-           
+    <script type="text/javascript" charset="utf-8" src="js/config/config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/utils.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/views/row.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/views/table.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/views/topBar.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/main.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="screen">
+
+      <div class="topPanel">
+        <div class="relationImage0 divImage">
+          <a href="#" onclick="relationClick(1)"><img src="img/CTOF.png" /></a>
         </div>
-    </body>
+
+        <div class="relationImage1 divImage" style="display: none;">
+          <a href="#" onclick="relationClick(0)"><img src="img/FTOC.png" /></a>
+        </div>
+
+        <input class="inputField input" type="number" maxlength="3" onkeyup="validate(this)" />
+        <img class="convImage1" src="img/arrow_red_small.png"/ style="display: none;">
+        <img class="convImage0" src="img/arrow_green_small.png"/>
+        <input class="inputField output" readonly="readonly" />
+      </div>
+
+      <section class="tables">
+        <div class="tableC view"></div>
+        <div class="tableF view"></div>
+      </section>
+
+      <div class="footer">
+        <br />
+        Tap on <img src="img/CTOF.png" /> to change a type of temperature conversion.
+      </div>
+    </div>
+  </body>
 </html>

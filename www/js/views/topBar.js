@@ -1,10 +1,9 @@
 function onLoad() {
-    //$(".input").val("0");
-    //core.setDefault();
-    //showOutput();
+    $(".input").val("0");
+    core.setDefault();
+    showOutput();
 
-    //hideFooter();
-    new tt.temperatureTable();
+    hideFooter();
 }
 
 function hideFooter() {
