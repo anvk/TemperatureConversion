@@ -1,6 +1,6 @@
 var tt = tt || {};
 
-(function() {
+(function($) {
   var topPanel = function(options) {
     this._init = this._init.bind(this);
 
@@ -9,9 +9,11 @@ var tt = tt || {};
 
   topPanel.prototype = {
     _init: function(options) {
-
+      $('.slidingPanelButton').click(function() {
+        $('.slidePanel').panel('open');
+      });
     }
   };
 
   tt.topPanel = topPanel;
-})();
+})(jQuery);

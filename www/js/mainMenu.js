@@ -1,23 +1,4 @@
-function onLoad() {
-    //$(".input").val("0");
-    //core.setDefault();
-    //showOutput();
 
-    //hideFooter();
-    new tt.temperatureTable();
-}
-
-function hideFooter() {
-    setTimeout(function() {
-        $(".footer").hide(1000);
-        //$('.view').animate({height: '+=40'}, 1000);
-    },5000);
-}
-
-function relationClick(index) {
-    core.switchView(index);
-    showOutput();
-}
 
 function validate(c, evt) {
     var msg = c.value;
@@ -34,13 +15,4 @@ function validate(c, evt) {
     showOutput();
 }
 
-function showOutput() {
-    var value = $(".input").val();
 
-    if (value === "") {
-        $(".output").val("");
-        return;
-    }
-
-    $(".output").val(core.convert(parseInt(value)));
-}

@@ -11,11 +11,15 @@ var tt = tt || {};
   temperatureTable.prototype = {
     _init: function() {
       var tableCContainer = '.tableC',
-          tableFContainer = '.tableF';
+          tableFContainer = '.tableF',
+          celciusPrefix = '°C',
+          fahrenheitPrefix = '°F';
 
       this._tableC = new table({
         container: tableCContainer,
         boundary: config.celciusBoundary,
+        fromPrefix: celciusPrefix,
+        toPrefix: fahrenheitPrefix,
         convertFunc: function(value) {
           return utils.temperatureConvert(value, false);
         }
@@ -24,6 +28,8 @@ var tt = tt || {};
       this._tableF = new table({
         container: tableFContainer,
         boundary: config.fahrenheitBoundary,
+        fromPrefix: fahrenheitPrefix,
+        toPrefix: celciusPrefix,
         convertFunc: function(value) {
           return utils.temperatureConvert(value, true);
         }
