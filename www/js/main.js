@@ -1,17 +1,20 @@
-tt = tt || {};
+var tt = tt || {};
 
-(function($, config, table, topBar) {
-  var temperatureTable.prototype = function() {
+(function($, config, utils, table, topBar) {
+  var temperatureTable = function() {
     this.changeViews = this.changeViews.bind(this);
     this._init = this._init.bind(this);
 
     this._init();
   };
 
-  var temperatureTable = {
+  temperatureTable.prototype = {
     _init: function() {
+      var tableCContainer = '.tableC',
+          tableFContainer = '.tableF';
+
       this._tableC = new table({
-        container: '.tableC',
+        container: tableCContainer,
         boundary: config.celciusBoundary,
         convertFunc: function(value) {
           return utils.temperatureConvert(value, false);
@@ -19,34 +22,39 @@ tt = tt || {};
       });
 
       this._tableF = new table({
-        container: '.tableF',
+        container: tableFContainer,
         boundary: config.fahrenheitBoundary,
         convertFunc: function(value) {
           return utils.temperatureConvert(value, true);
         }
       });
 
-      this.showCelcius(utils.isCelciusDefaultView);
+      this.changeViews(config.isCelciusDefaultView);
     },
     changeViews: function(showCelcius) {
-      if (this._showCelcius === showCelcius) {
+      if (this._showCelcius === showCelcius && !this._firstTimeLoad) {
         return;
+      }
+
+      if (this._firstTimeLoad) {
+        this._firstTimeLoad = false;
       }
 
       this._showCelcius = showCelcius;
 
       if (showCelcius) {
-        this.tableC.show();
-        this.tableF.hide();
+        this._tableC.el.show();
+        this._tableF.el.hide();
       } else {
-        this.tableC.hide();
-        this.tableF.show();
+        this._tableC.el.hide();
+        this._tableF.el.show();
       }
     },
     _tableC: null,
     _tableF: null,
+    _firstTimeLoad: true,
     _showCelcius: true
   };
 
   tt.temperatureTable = temperatureTable;
-})(jQuery, tt.config || {}, tt.table || {}, tt.topBar || {});
+})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topBar || {});

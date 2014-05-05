@@ -1,4 +1,4 @@
-tt = tt || {};
+var tt = tt || {};
 
 (function() {
   /*
@@ -7,14 +7,14 @@ tt = tt || {};
   toValue
   toPrefix
   */
-  var row.prototype = function(options) {
+  var row = function(options) {
     this.getRowMarkup = this.getRowMarkup.bind(this);
     this._init = this._init.bind(this);
 
     this._init(options);
   };
 
-  var row = {
+  row.prototype = {
     getRowMarkup: function() {
       return this._markup;
     },

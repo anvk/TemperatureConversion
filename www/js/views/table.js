@@ -1,4 +1,4 @@
-tt = tt || {};
+var tt = tt || {};
 
 (function($, config, row) {
   /*
@@ -6,28 +6,28 @@ tt = tt || {};
     boundary
     convertFunc
   */
-  var table.prototype = function(options) {
+  var table = function(options) {
     options = options || {};
 
     this._init = this._init.bind(this);
 
-    this._init();
+    this._init(options);
   };
 
-  var table = {
+  table.prototype = {
     el: null,
     _init: function(options) {
-      var el = $(options.container),
-          convertFunc = options.convertFunc,
-          boundary = config.boundary,
+      var convertFunc = options.convertFunc,
+          boundary = options.boundary,
           rows = [],
-          row;
+          rowEntry;
       for (var i = boundary * -1, length; i <= boundary; i = i + 5) {
-        row = new row(boundary, convertFunc(boundary));
-        rows.push(row.getRowMarkup());
+        rowEntry = new row(boundary, convertFunc(boundary));
+        rows.push(rowEntry.getRowMarkup());
       }
 
-      el.append(rows);
+      this.el = $(options.container);
+      this.el.append(rows);
     }
   };
 

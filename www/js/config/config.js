@@ -1,4 +1,4 @@
-tt = tt || {};
+var tt = tt || {};
 
 tt.config = {
   celciusBoundary: 300,
