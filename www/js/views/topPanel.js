@@ -1,7 +1,13 @@
 var tt = tt || {};
 
 (function($) {
+  /*
+    toggleFlipSelector
+    onCelciusViewChange
+  */
   var topPanel = function(options) {
+    options = options || {};
+
     this._init = this._init.bind(this);
 
     this._init(options);
@@ -9,10 +15,16 @@ var tt = tt || {};
 
   topPanel.prototype = {
     _init: function(options) {
-      $('#slidingPanel-tFlip').bind( "change", function(event, ui) {
-        
+      var toggleFlip = $(options.toggleFlipSelector),
+          celciusSelectValue = 'C';
+
+      toggleFlip.bind("change", function(event, ui) {
+        options.onCelciusViewChange(toggleFlip[0].value === celciusSelectValue);
       });
-    }
+
+      this._toggleFlip = toggleFlip;
+    },
+    _toggleFlip: null
   };
 
   tt.topPanel = topPanel;

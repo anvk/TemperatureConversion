@@ -2,10 +2,11 @@ var tt = tt || {};
 
 (function(utils) {
   /*
-  fromValue
-  fromPrefix
-  toValue
-  toPrefix
+    fromValue
+    fromPrefix
+    toValue
+    toPrefix
+    className
   */
   var row = function(model) {
     model = model || {};

@@ -1,6 +1,6 @@
 var tt = tt || {};
 
-(function($, config, utils, table, topPanel, phoneState) {
+(function($, config, utils, table, topPanel, slidingPanel, phoneState) {
   var temperatureTable = function() {
     this.changeViews = this.changeViews.bind(this);
     this._init = this._init.bind(this);
@@ -12,11 +12,17 @@ var tt = tt || {};
     _init: function() {
       var tableCContainer = '.tableC',
           tableFContainer = '.tableF',
+          toggleFlipSelector = '#slidingPanel-tFlip',
+          cInputSelector = 'slidingPanel-cInput',
+          fInputSelector = 'slidingPanel-fInput',
           celciusPrefix = '°C',
           fahrenheitPrefix = '°F';
 
       this._phoneState = new phoneState({
-        //isCelciusView: config.isCelciusDefaultView
+        isCelciusView: config.isCelciusDefaultView,
+        onCelciusViewChange: function(value) {
+          this.changeViews(value);
+        }.bind(this)
       });
 
       this._tableC = new table({
@@ -40,7 +46,13 @@ var tt = tt || {};
       });
 
       new topPanel({
-        main: this
+        toggleFlipSelector: toggleFlipSelector,
+        onCelciusViewChange: this._phoneState.setCelciusView
+      });
+
+      new slidingPanel({
+        cInputSelector: cInputSelector,
+        fInputSelector: fInputSelector
       });
 
       this.changeViews(config.isCelciusDefaultView);
@@ -72,4 +84,4 @@ var tt = tt || {};
   };
 
   tt.temperatureTable = temperatureTable;
-})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topPanel || {}, tt.phoneState || {});
+})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topPanel || {}, tt.slidingPanel || {}, tt.phoneState || {});

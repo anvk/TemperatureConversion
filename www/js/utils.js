@@ -20,6 +20,11 @@ tt = tt || {};
         }
         return value;
       });
+    },
+    // http://stackoverflow.com/a/7356528/812519
+    isFunction: function(functionToCheck) {
+      var getType = {};
+      return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
     }
   };
 })();
