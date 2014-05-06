@@ -1,6 +1,6 @@
 var tt = tt || {};
 
-(function($, config, utils, table, topPanel) {
+(function($, config, utils, table, topPanel, phoneState) {
   var temperatureTable = function() {
     this.changeViews = this.changeViews.bind(this);
     this._init = this._init.bind(this);
@@ -14,6 +14,10 @@ var tt = tt || {};
           tableFContainer = '.tableF',
           celciusPrefix = '°C',
           fahrenheitPrefix = '°F';
+
+      this._phoneState = new phoneState({
+        //isCelciusView: config.isCelciusDefaultView
+      });
 
       this._tableC = new table({
         container: tableCContainer,
@@ -35,7 +39,9 @@ var tt = tt || {};
         }
       });
 
-      new topPanel();
+      new topPanel({
+        main: this
+      });
 
       this.changeViews(config.isCelciusDefaultView);
     },
@@ -58,6 +64,7 @@ var tt = tt || {};
         this._tableF.el.show();
       }
     },
+    _phoneState: null,
     _tableC: null,
     _tableF: null,
     _firstTimeLoad: true,
@@ -65,4 +72,4 @@ var tt = tt || {};
   };
 
   tt.temperatureTable = temperatureTable;
-})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topPanel || {});
+})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topPanel || {}, tt.phoneState || {});

@@ -1,0 +1,25 @@
+@row-padding: 0.6em;
+
+.view {
+  text-align: center;
+  width: 100%;
+
+  tr > td {
+    padding: @row-padding;
+  }
+
+  .rowodd {
+    background-color: #F0FFFF;
+  }
+}
+
+/*overwrite for jQuery-Mobile*/
+.ui-content {
+  padding: 0px;
+}
+
+#slidingPanel {
+  .ui-slider-switch {
+    width: 8em;
+  }
+}

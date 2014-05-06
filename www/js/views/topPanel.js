@@ -9,8 +9,8 @@ var tt = tt || {};
 
   topPanel.prototype = {
     _init: function(options) {
-      $('.slidingPanelButton').click(function() {
-        $('.slidePanel').panel('open');
+      $('#slidingPanel-tFlip').bind( "change", function(event, ui) {
+        
       });
     }
   };
