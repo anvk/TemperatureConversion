@@ -10,11 +10,11 @@ var tt = tt || {};
 
   temperatureTable.prototype = {
     _init: function() {
-      var tableCContainer = '.tableC',
-          tableFContainer = '.tableF',
+      var tableCContainer = '#tableC',
+          tableFContainer = '#tableF',
           toggleFlipSelector = '#slidingPanel-tFlip',
-          cInputSelector = 'slidingPanel-cInput',
-          fInputSelector = 'slidingPanel-fInput',
+          cInputSelector = '#slidingPanel-cInput',
+          fInputSelector = '#slidingPanel-fInput',
           celciusPrefix = '°C',
           fahrenheitPrefix = '°F';
 
@@ -47,7 +47,7 @@ var tt = tt || {};
 
       new topPanel({
         toggleFlipSelector: toggleFlipSelector,
-        onCelciusViewChange: this._phoneState.setCelciusView
+        onCelciusViewChange: this._phoneState.setIsCelciusView
       });
 
       new slidingPanel({

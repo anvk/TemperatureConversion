@@ -8,14 +8,14 @@ var tt = tt || {};
   var phoneState = function(model) {
     model = model || {};
 
-    this.setCelciusView = this.setCelciusView.bind(this);
+    this.setIsCelciusView = this.setIsCelciusView.bind(this);
     this._init = this._init.bind(this);
 
     this._init(model);
   };
 
   phoneState.prototype = {
-    setCelciusView: function(value) {
+    setIsCelciusView: function(value) {
       this._onCelciusViewChange(value);
       this._isCelciusView = value;
     },

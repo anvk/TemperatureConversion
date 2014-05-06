@@ -33,9 +33,9 @@
         </select>
         <hr/>
         <label for="basic">&deg; C</label>
-        <input type="text" name="name" id="slidingPanel-cInput" value="" />
+        <input name="name" id="slidingPanel-cInput" maxlength="3" type="number" value="" />
         <label for="basic">&deg; F</label>
-        <input type="text" name="name" id="slidingPanel-fInput" value="" />
+        <input name="name" id="slidingPanel-fInput" maxlength="3" type="number" value="" />
         <hr/>
         <a href="#my-header" data-rel="close" data-role="button">Close Panel</a>
       </div><!-- /panel -->
@@ -46,8 +46,8 @@
       </div><!-- /header -->
 
       <div data-role="content">
-        <table class="tableC view"></div>
-        <table class="tableF view"></div>
+        <table id="tableC" class="view"></div>
+        <table id="tableF" class="view"></div>
       </div><!-- /content -->
 
     </div><!-- /page -->
