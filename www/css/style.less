@@ -1,4 +1,6 @@
 @row-padding: 0.6em;
+@odd-rowColor: #F0FFFF;
+@sliderWidth: 8em;
 
 .view {
   text-align: center;
@@ -9,7 +11,7 @@
   }
 
   .rowodd {
-    background-color: #F0FFFF;
+    background-color: @odd-rowColor;
   }
 }
 
@@ -20,6 +22,6 @@
 
 #slidingPanel {
   .ui-slider-switch {
-    width: 8em;
+    width: @sliderWidth;
   }
 }
