@@ -27,8 +27,15 @@ var tt = tt || {};
         };
       };
 
+      var emptyFunc = function() {
+        cInput.val('');
+        fInput.val('');
+      };
+
       cInput.keyup(convertFunc(false));
+      cInput.click(emptyFunc);
       fInput.keyup(convertFunc(true));
+      fInput.click(emptyFunc);
     }
   };
 
