@@ -1,8 +1,7 @@
 define([
   'jquery',
-  'config/config',
   'views/row'
-], function($, config, row) {
+], function($, Row) {
   /*
     container
     boundary
@@ -32,7 +31,7 @@ define([
           rowEntry;
 
       for (var i = boundary, length; i >= -1 * boundary; i = i - 5) {
-        rowEntry = new row({
+        rowEntry = new Row({
           fromValue: i,
           toValue: convertFunc(i),
           fromPrefix: fromPrefix,

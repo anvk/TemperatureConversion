@@ -22,6 +22,7 @@ define([
           toggleFlipSelector = '#slidingPanel-tFlip',
           cInputSelector = '#slidingPanel-cInput',
           fInputSelector = '#slidingPanel-fInput',
+          pageSelector = '#page',
           celciusPrefix = '°C',
           fahrenheitPrefix = '°F';
 
@@ -62,7 +63,7 @@ define([
         fInputSelector: fInputSelector
       });
 
-      $('#page').show();
+      $(pageSelector).show();
     },
     changeViews: function(showCelcius) {
       if (this._showCelcius === showCelcius) {
