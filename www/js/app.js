@@ -1,14 +1,21 @@
-var tt = tt || {};
+define([
+  'jquery',
+  'config/config',
+  'utils',
+  'views/table',
+  'views/topPanel',
+  'views/slidingPanel',
+  'models/phoneState'
+], function($, Config, Utils, Table, TopPanel, SlidingPanel, PhoneState) {
 
-(function($, config, utils, table, topPanel, slidingPanel, phoneState) {
-  var temperatureTable = function() {
+  var App = function() {
     this.changeViews = this.changeViews.bind(this);
     this._init = this._init.bind(this);
 
     this._init();
   };
 
-  temperatureTable.prototype = {
+  App.prototype = {
     _init: function() {
       var tableCContainer = '#tableC',
           tableFContainer = '#tableF',
@@ -18,52 +25,48 @@ var tt = tt || {};
           celciusPrefix = '°C',
           fahrenheitPrefix = '°F';
 
-      this._phoneState = new phoneState({
-        isCelciusView: config.isCelciusDefaultView,
+      this._phoneState = new PhoneState({
+        isCelciusView: Config.isCelciusDefaultView,
         onCelciusViewChange: function(value) {
           this.changeViews(value);
         }.bind(this)
       });
 
-      this._tableC = new table({
+      this._tableC = new Table({
         container: tableCContainer,
-        boundary: config.celciusBoundary,
+        boundary: Config.celciusBoundary,
         fromPrefix: celciusPrefix,
         toPrefix: fahrenheitPrefix,
         convertFunc: function(value) {
-          return utils.temperatureConvert(value, false);
+          return Utils.temperatureConvert(value, false);
         }
       });
 
-      this._tableF = new table({
+      this._tableF = new Table({
         container: tableFContainer,
-        boundary: config.fahrenheitBoundary,
+        boundary: Config.fahrenheitBoundary,
         fromPrefix: fahrenheitPrefix,
         toPrefix: celciusPrefix,
         convertFunc: function(value) {
-          return utils.temperatureConvert(value, true);
+          return Utils.temperatureConvert(value, true);
         }
       });
 
-      new topPanel({
+      new TopPanel({
         toggleFlipSelector: toggleFlipSelector,
         onCelciusViewChange: this._phoneState.setIsCelciusView
       });
 
-      new slidingPanel({
+      new SlidingPanel({
         cInputSelector: cInputSelector,
         fInputSelector: fInputSelector
       });
 
-      this.changeViews(config.isCelciusDefaultView);
+      $('#page').show();
     },
     changeViews: function(showCelcius) {
-      if (this._showCelcius === showCelcius && !this._firstTimeLoad) {
+      if (this._showCelcius === showCelcius) {
         return;
-      }
-
-      if (this._firstTimeLoad) {
-        this._firstTimeLoad = false;
       }
 
       this._showCelcius = showCelcius;
@@ -79,9 +82,8 @@ var tt = tt || {};
     _phoneState: null,
     _tableC: null,
     _tableF: null,
-    _firstTimeLoad: true,
     _showCelcius: true
   };
 
-  tt.temperatureTable = temperatureTable;
-})(jQuery, tt.config || {}, tt.utils || {}, tt.table || {}, tt.topPanel || {}, tt.slidingPanel || {}, tt.phoneState || {});
+  return App;
+});

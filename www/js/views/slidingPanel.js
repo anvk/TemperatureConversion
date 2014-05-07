@@ -1,11 +1,12 @@
-var tt = tt || {};
-
-(function($, utils) {
+define([
+  'jquery',
+  'utils'
+], function($, Utils) {
   /*
     cInputSelector
     fInputSelector
   */
-  var slidingPanel = function(options) {
+  var SlidingPanel = function(options) {
     options = options || {};
 
     this._init = this._init.bind(this);
@@ -13,7 +14,7 @@ var tt = tt || {};
     this._init(options);
   };
 
-  slidingPanel.prototype = {
+  SlidingPanel.prototype = {
     _init: function(options) {
       var cInput = $(options.cInputSelector),
           fInput = $(options.fInputSelector);
@@ -22,7 +23,7 @@ var tt = tt || {};
         return function(event) {
           var el = (toCelcius) ? cInput : fInput,
               value = event.target.value;
-          value = (value.length === 0) ? '' : utils.temperatureConvert(parseInt(value), toCelcius);
+          value = (value.length === 0) ? '' : Utils.temperatureConvert(parseInt(value), toCelcius);
           el.val(value);
         };
       };
@@ -32,12 +33,10 @@ var tt = tt || {};
         fInput.val('');
       };
 
-      cInput.keyup(convertFunc(false));
-      cInput.click(emptyFunc);
-      fInput.keyup(convertFunc(true));
-      fInput.click(emptyFunc);
+      cInput.keyup(convertFunc(false)).click(emptyFunc);
+      fInput.keyup(convertFunc(true)).click(emptyFunc);
     }
   };
 
-  tt.slidingPanel = slidingPanel;
-})(jQuery, tt.utils || {});
+  return SlidingPanel;
+});

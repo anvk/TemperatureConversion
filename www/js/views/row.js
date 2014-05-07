@@ -1,6 +1,6 @@
-var tt = tt || {};
-
-(function(utils) {
+define([
+  'utils'
+], function(Utils) {
   /*
     fromValue
     fromPrefix
@@ -8,7 +8,7 @@ var tt = tt || {};
     toPrefix
     className
   */
-  var row = function(model) {
+  var Row = function(model) {
     model = model || {};
 
     this.getRowMarkup = this.getRowMarkup.bind(this);
@@ -17,15 +17,15 @@ var tt = tt || {};
     this._init(model);
   };
 
-  row.prototype = {
+  Row.prototype = {
     getRowMarkup: function() {
       return this._markup;
     },
     _init: function(model) {
-      this._markup = utils.stringBuilder('<tr class="{{className}}"><td>{{fromValue}} {{fromPrefix}}</td><td>{{toValue}} {{toPrefix}}</td></tr>', model);
+      this._markup = Utils.stringBuilder('<tr class="{{className}}"><td>{{fromValue}} {{fromPrefix}}</td><td>{{toValue}} {{toPrefix}}</td></tr>', model);
     },
     _markup: null
   };
 
-  tt.row = row;
-})(tt.utils || {});
+  return Row;
+});

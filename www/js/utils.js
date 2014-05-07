@@ -1,7 +1,5 @@
-tt = tt || {};
-
-(function() {
-  tt.utils = {
+define(function() {
+  return {
     temperatureConvert: function(t, toCelcius) {
       return parseInt((toCelcius) ? (t - 32) * (5 / 9) : t * (9 / 5) + 32);
     },
@@ -27,4 +25,4 @@ tt = tt || {};
       return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
     }
   };
-})();
+});

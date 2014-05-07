@@ -1,6 +1,8 @@
-var tt = tt || {};
-
-(function($, config, row) {
+define([
+  'jquery',
+  'config/config',
+  'views/row'
+], function($, config, row) {
   /*
     container
     boundary
@@ -8,7 +10,7 @@ var tt = tt || {};
     fromPrefix
     toPrefix
   */
-  var table = function(options) {
+  var Table = function(options) {
     options = options || {};
 
     this._init = this._init.bind(this);
@@ -16,7 +18,7 @@ var tt = tt || {};
     this._init(options);
   };
 
-  table.prototype = {
+  Table.prototype = {
     el: null,
     _init: function(options) {
       var convertFunc = options.convertFunc,
@@ -46,5 +48,5 @@ var tt = tt || {};
     }
   };
 
-  tt.table = table;
-})(jQuery, tt.config || {}, tt.row || {});
+  return Table;
+});

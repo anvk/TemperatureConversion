@@ -1,11 +1,11 @@
-var tt = tt || {};
-
-(function($) {
+define([
+  'jquery'
+], function($) {
   /*
     toggleFlipSelector
     onCelciusViewChange
   */
-  var topPanel = function(options) {
+  var TopPanel = function(options) {
     options = options || {};
 
     this._init = this._init.bind(this);
@@ -13,12 +13,12 @@ var tt = tt || {};
     this._init(options);
   };
 
-  topPanel.prototype = {
+  TopPanel.prototype = {
     _init: function(options) {
       var toggleFlip = $(options.toggleFlipSelector),
           celciusSelectValue = 'C';
 
-      toggleFlip.bind("change", function(event, ui) {
+      toggleFlip.bind('change', function(event, ui) {
         options.onCelciusViewChange(toggleFlip[0].value === celciusSelectValue);
       });
 
@@ -27,5 +27,5 @@ var tt = tt || {};
     _toggleFlip: null
   };
 
-  tt.topPanel = topPanel;
-})(jQuery);
+  return TopPanel;
+});

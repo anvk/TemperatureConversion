@@ -1,11 +1,11 @@
-var tt = tt || {};
-
-(function(utils) {
+define([
+  'utils'
+], function(Utils) {
   /*
     isCelciusView
     onCelciusViewChange
   */
-  var phoneState = function(model) {
+  var PhoneState = function(model) {
     model = model || {};
 
     this.setIsCelciusView = this.setIsCelciusView.bind(this);
@@ -14,18 +14,18 @@ var tt = tt || {};
     this._init(model);
   };
 
-  phoneState.prototype = {
+  PhoneState.prototype = {
     setIsCelciusView: function(value) {
       this._onCelciusViewChange(value);
       this._isCelciusView = value;
     },
     _init: function(model) {
       this._isCelciusView = model.isCelciusView;
-      this._onCelciusViewChange = (utils.isFunction(model.onCelciusViewChange)) ? model.onCelciusViewChange : function() {};
+      this._onCelciusViewChange = (Utils.isFunction(model.onCelciusViewChange)) ? model.onCelciusViewChange : function() {};
     },
     _isCelciusView: true,
     _onCelciusViewChange: null
   };
 
-  tt.phoneState = phoneState;
-})(tt.utils || {});
+  return PhoneState;
+});
