@@ -1,7 +1,7 @@
 define(function() {
   return {
-    celciusBoundary: 300,
-    fahrenheitBoundary: 600,
+    celciusBoundary: 305,
+    fahrenheitBoundary: 605,
     isCelciusDefaultView: true
   };
 });
