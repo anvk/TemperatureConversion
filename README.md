@@ -1,4 +1,4 @@
-# TemperatureTable v2.0
+# TemperatureConversion
 
 > An accessible easy to use Accordeon widget.
 
