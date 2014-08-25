@@ -40,7 +40,7 @@ define([
             value = target.value.slice(0, maxLength);
             target.value = value;
           }
-          
+
           el.val(Utils.temperatureConvert(parseInt(value), isToCelcius));
         };
       };
