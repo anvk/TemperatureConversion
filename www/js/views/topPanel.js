@@ -3,6 +3,7 @@ define([
 ], function($) {
   /*
     toggleFlipSelector
+    closeButtonSelector
     onCelciusViewChange
   */
   var TopPanel = function(options) {
@@ -14,17 +15,20 @@ define([
   };
 
   TopPanel.prototype = {
-    _init: function(options) {
-      var toggleFlip = $(options.toggleFlipSelector),
-          celciusSelectValue = 'C';
+    _init: function TopPanel__init(options) {
+      var celciusSelectValue = 'C',
+          toggleFlip = $(options.toggleFlipSelector),
+          closeButton = $(options.closeButtonSelector);
 
-      toggleFlip.bind('change', function(event, ui) {
-        options.onCelciusViewChange(toggleFlip[0].value === celciusSelectValue);
+      toggleFlip = $(options.toggleFlipSelector);
+
+      toggleFlip.bind('change', function(event) {
+        options.onCelciusViewChange(event.target.value === celciusSelectValue);
+        setTimeout(function() {
+          closeButton.click();
+        }, 500);
       });
-
-      this._toggleFlip = toggleFlip;
-    },
-    _toggleFlip: null
+    }
   };
 
   return TopPanel;

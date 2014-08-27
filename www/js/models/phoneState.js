@@ -15,13 +15,15 @@ define([
   };
 
   PhoneState.prototype = {
-    setIsCelciusView: function(value) {
+    setIsCelciusView: function PhoneState_setIsCelciusView(value) {
       this._onCelciusViewChange(value);
       this._isCelciusView = value;
     },
-    _init: function(model) {
+    _init: function PhoneState__init(model) {
       this._isCelciusView = model.isCelciusView;
-      this._onCelciusViewChange = (Utils.isFunction(model.onCelciusViewChange)) ? model.onCelciusViewChange : function() {};
+      this._onCelciusViewChange =
+        (Utils.isFunction(model.onCelciusViewChange)) ?
+        model.onCelciusViewChange : function() {};
     },
     _isCelciusView: true,
     _onCelciusViewChange: null

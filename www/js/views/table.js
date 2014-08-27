@@ -18,8 +18,7 @@ define([
   };
 
   Table.prototype = {
-    el: null,
-    _init: function(options) {
+    _init: function Table__init(options) {
       var convertFunc = options.convertFunc,
           boundary = options.boundary,
           fromPrefix = options.fromPrefix,
@@ -30,7 +29,7 @@ define([
           rows = [],
           rowEntry;
 
-      for (var i = boundary, length; i >= -1 * boundary; i = i - 5) {
+      for (var i = boundary; i >= -1 * boundary; i = i - 5) {
         rowEntry = new Row({
           fromValue: i,
           toValue: convertFunc(i),
@@ -44,7 +43,8 @@ define([
 
       this.el = $(options.container);
       this.el[0].innerHTML = rows.join('');
-    }
+    },
+    el: null
   };
 
   return Table;

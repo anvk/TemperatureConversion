@@ -41,10 +41,11 @@ define([
   };
 
   App.prototype = {
-    _init: function() {
+    _init: function App__init() {
       var tableCContainer = '#tableC',
           tableFContainer = '#tableF',
           toggleFlipSelector = '#slidingPanel-tFlip',
+          closeButtonSelector = '#slidingPanel-closeButton',
           cInputSelector = '#slidingPanel-cInput',
           fInputSelector = '#slidingPanel-fInput',
           pageSelector = '#page',
@@ -81,6 +82,7 @@ define([
 
       new TopPanel({
         toggleFlipSelector: toggleFlipSelector,
+        closeButtonSelector: closeButtonSelector,
         onCelciusViewChange: this._phoneState.setIsCelciusView
       });
 
@@ -92,7 +94,7 @@ define([
       $(pageSelector).show();
       $(splashSelector).hide();
     },
-    changeViews: function(showCelcius) {
+    changeViews: function App_changeViews(showCelcius) {
       if (this._showCelcius === showCelcius) {
         return;
       }

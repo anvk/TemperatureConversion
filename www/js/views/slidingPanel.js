@@ -15,7 +15,7 @@ define([
   };
 
   SlidingPanel.prototype = {
-    _init: function(options) {
+    _init: function SlidingPanel__init(options) {
       var cInput = $(options.cInputSelector),
           fInput = $(options.fInputSelector);
 

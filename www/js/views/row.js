@@ -18,11 +18,15 @@ define([
   };
 
   Row.prototype = {
-    getRowMarkup: function() {
+    getRowMarkup: function Row_getRowMarkup() {
       return this._markup;
     },
-    _init: function(model) {
-      this._markup = Utils.stringBuilder('<tr class="{{className}}"><td>{{fromValue}} {{fromPrefix}}</td><td>{{toValue}} {{toPrefix}}</td></tr>', model);
+    _init: function Row__init(model) {
+      this._markup = Utils.stringBuilder(
+        '<tr class="{{className}}">' +
+        '<td>{{fromValue}} {{fromPrefix}}</td>' +
+        '<td>{{toValue}} {{toPrefix}}</td>' +
+        '</tr>', model);
     },
     _markup: null
   };
