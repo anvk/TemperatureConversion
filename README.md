@@ -1,6 +1,6 @@
 # TemperatureConversion
 
-> An accessible easy to use Accordeon widget.
+> Tiny android app using JS technologies.
 
 ## Technology
 
@@ -8,7 +8,7 @@ PhoneGap + jQuery Mobile + JS + HTML5 + LESS + Require.JS
 
 ## Live app
 
-Android: https://play.google.com/store/apps/details?id=anovak.temperaturetable
+Android: https://play.google.com/store/apps/details?id=com.alexnovak.temperatureconversion
 
 ## License
 The MIT License (MIT)
